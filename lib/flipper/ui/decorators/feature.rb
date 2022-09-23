@@ -52,6 +52,8 @@ module Flipper
             statuses << "#{feature.percentage_of_time_value}% of time"
           end
 
+          statuses << 'Disabled' if statuses.empty?
+
           Util.to_sentence(statuses)
         end
 
