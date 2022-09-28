@@ -9,6 +9,15 @@ module Flipper
         route %r{\A/features/?\Z}
 
         def get
+          if params
+            if feature = params['enable']
+              Flipper.enable(feature)
+            end
+            if feature = params['disable']
+              Flipper.disable(feature)
+            end
+          end
+
           @page_title = 'Features'
           keys = flipper.features.map(&:key)
           descriptions = if Flipper::UI.configuration.show_feature_description_in_list?

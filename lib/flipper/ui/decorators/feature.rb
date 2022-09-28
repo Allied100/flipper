@@ -20,6 +20,17 @@ module Flipper
           @pretty_name ||= Util.titleize(name)
         end
 
+        def status_image
+          case feature.state
+          when :on
+            'img-success'
+          when :off
+            'img-danger'
+          when :conditional
+            'img-warning'
+          end
+        end
+ 
         def color_class
           case feature.state
           when :on
